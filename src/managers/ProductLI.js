@@ -35,6 +35,8 @@ class ProductLIManager {
       productName,
       name,
       price,
+      quantity: 0,
+      total: 0,
     });
 
     try {

@@ -2,6 +2,7 @@ const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const morgan = require("morgan");
 
 const shopRoutes = require("./routes/Shop");
 const productRoutes = require("./routes/Product");
@@ -14,6 +15,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

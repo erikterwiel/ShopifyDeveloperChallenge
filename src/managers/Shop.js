@@ -16,9 +16,11 @@ class ShopManager {
       
       const originalShop = await this._shopService.getByName(name);
       
-      const shop = {};
-      shop.products = await this._productManager.get({ shopName: name });
-      shop.orders = await this._orderManager.get({ shopName: name });
+      const shop = JSON.parse(JSON.stringify(originalShop[0]));
+      const products =  await this._productManager.get({ shopName: name });
+      const orders = await this._orderManager.get({ shopName: name });
+      shop.products = products.json;
+      shop.orders = orders.json;
 
       return { status: 200, json: shop };
 

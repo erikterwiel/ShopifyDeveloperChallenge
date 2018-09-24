@@ -16,16 +16,35 @@ class ProductManager {
       product.productLineItems = await this._productLIService.getByProductName(shopName, name);
       delete product.quantity;
       delete product.total;
+      delete product._id;
+      delete product.__v;
       return { status: 200, json: [product] };
     
     } else if (shopName) {
 
       const products = await this._productService.getByShopName(shopName);
-      const productsModified = products.map(async product => {
-        product.productLineItems = await this._productLIService.getByProductName(shopName, product.name);
+      const productsModified = await Promise.all(products.map(async originalProduct => {
+       
+        const product = JSON.parse(JSON.stringify(originalProduct));
+
+        const productLineItems = await this._productLIService.getByProductName(shopName, originalProduct.name);
+        product.productLineItems = productLineItems.map(productLineItem => {
+          
+          const newLineItem = {};
+          newLineItem.shopName = productLineItem.shopName;
+          newLineItem.productName = productLineItem.productName;
+          newLineItem.name = productLineItem.name;
+          newLineItem.price = productLineItem.price;
+          
+          return newLineItem;
+        })
+        
         delete product.quantity;
         delete product.total;
-      });
+        delete product._id;
+        delete product.__v;
+        return product;
+      }));
       return { status: 200, json: productsModified };
     
     } else {
