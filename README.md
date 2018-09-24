@@ -33,6 +33,7 @@ Authorization: Key 224c560337b54ab4ac6c07eea08b1e20
 - /order
 
 ## /shop
+
 ### GET request Shop
 
 http://35.232.145.58/shop will return
@@ -92,3 +93,146 @@ http://35.232.145.58/shop?name=shopName will return object below, try http://35.
 }
 ```
 
+### POST request Shop
+
+Make a POST request to http://35.232.145.58/shop with the JSON body below to add a new shop
+```
+{
+	"name": String
+}
+```
+
+## /product
+
+### GET request Product
+
+
+### POST request Product
+
+Make a POST request to http://35.232.145.58/product with the JSON body below to add a new product
+```
+{
+	"shopName": String,
+	"name": String,
+	"price": Number
+}
+```
+
+### PATCH request Product
+
+Make a POST request to http://35.232.145.58/product with the JSON body below to update a product
+```
+{
+    "_id": ObjectId,
+	"shopName": String,
+	"name": String,
+	"price": Number
+}
+```
+
+### Delete request Product
+
+Make a POST request to http://35.232.145.58/product with the JSON body below to delete a product
+```
+{
+    "_id": ObjectId,
+}
+```
+
+## /productLI
+
+### GET request ProductLI
+
+
+### POST request ProductLI
+
+Make a POST request to http://35.232.145.58/productLI with the JSON body below to add a new productLI
+```
+{
+	"shopName": String,
+	"productName": String,
+	"name": String,
+	"price": Number
+}
+```
+
+### PATCH request ProductLI
+
+Make a POST request to http://35.232.145.58/productLI with the JSON body below to update a productLI
+```
+{
+    "_id": ObjectId,
+    "shopName": String,
+	"productName": String,
+	"name": String,
+	"price": Number
+}
+```
+
+### Delete request ProductLI
+
+Make a POST request to http://35.232.145.58/productLI with the JSON body below to delete a productLI
+```
+{
+    "_id": ObjectId,
+}
+```
+
+## /order
+
+### GET request Order
+
+
+### POST request Order
+
+Make a POST request to http://35.232.145.58/order with the JSON body below to add a new order
+```
+{
+	"shopName": String,
+	"buyerName": String,
+    "orderLineItems": [
+		{
+			"name": String,
+			"quantity": Number,
+			"productLineItems": [
+				{
+					"name": String,
+					"quantity": Number
+				}
+			]
+		}
+	]
+}
+```
+
+### PATCH request Order
+
+Make a POST request to http://35.232.145.58/order with the JSON body below to update an order
+```
+{
+    "_id": ObjectId,
+	"shopName": String,
+	"buyerName": String,
+    "orderLineItems": [
+		{
+			"name": String,
+			"quantity": Number,
+			"productLineItems": [
+				{
+					"name": String,
+					"quantity": Number
+				}
+			]
+		}
+	]
+}
+```
+
+### Delete request Order
+
+Make a POST request to http://35.232.145.58/order with the JSON body below to delete an order
+```
+{
+    "_id": ObjectId,
+}
+```
