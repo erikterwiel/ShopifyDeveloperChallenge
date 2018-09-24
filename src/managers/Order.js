@@ -13,26 +13,18 @@ class OrderManager {
     if (id) {
 
       const originalOrder = await this._orderService.getById(id);
-      
-      const order = JSON.parse(JSON.stringify(originalOrder));
+      const order = this._transformOrder(originalOrder);
+      return { status: 200, json: order }; 
 
-      order.orderLineItems = order.orderLineItems.map(lineItem => {
-        
-        const newLineItem = {};
-        newLineItem.product = await this._productService.getByName(order.shopName, lineItem.name);
-        newLineItem.quantity = lineItem.quantity;
-
-        newLineItem.productLineItems = lineItem.productLineItems.map(productLineItem => {
-          const newProductLineItem = {};
-          newProductLineItem.product
-        });
-
-        newLineItem.total = newLineItem.lineItem; 
-      });
-
-
-      order.total = 0;
     } else if (shopName) {
+
+      const originalOrders = await this._orderService.getByName(shopName);
+      const orders = originalOrders.map(originalOrder => this._transformOrder(originalOrder));
+      return { status: 200, json: orders };
+
+    } else {
+
+      return { status: 400, json: [] };
 
     }
   }
@@ -73,6 +65,36 @@ class OrderManager {
     } catch (error) {
       return { status: 500, json: error };
     }
+  }
+
+  async _transformOrder(originalOrder) {
+
+    const order = JSON.parse(JSON.stringify(originalOrder));
+
+    order.orderLineItems = order.orderLineItems.map(async lineItem => {
+        
+      const newLineItem = await this._productService.getByName(order.shopName, lineItem.name);
+      newLineItem.quantity = lineItem.quantity;
+
+      newLineItem.productLineItems = lineItem.productLineItems.map(async productLineItem => {
+        const newProductLineItem = await this._productLIService.getByName(order.shopName, lineItem.name, productLineItem.name);
+        newProductLineItem.quantity = productLineItem.quantity;
+        newProductLineItem.total = productLineItem.price * productLineItem.quantity;
+        return newProductLineItem;
+      });
+
+      let total = lineItem.price;
+      newLineItem.productLineItems.forEach(productLineItem => total += productLineItem.total);
+      newLineItem.total = newLineItem.lineItem;
+
+      return newLineItem; 
+    });
+
+    let total = 0;
+    total += order.orderLineItems.forEach(orderLineItem => total += orderLineItem.total);
+    order.total = total;
+
+    return order;
   }
 }
 

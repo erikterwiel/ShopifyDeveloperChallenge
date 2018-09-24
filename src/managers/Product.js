@@ -23,7 +23,7 @@ class ProductManager {
       const products = await this._productService.getByShopName(shopName);
       const productsModified = products.map(async product => {
         product.productLineItems = await this._productLIService.getByProductName(shopName, product.name);
-        delete.product.quantity;
+        delete product.quantity;
         delete product.total;
       });
       return { status: 200, json: productsModified };
