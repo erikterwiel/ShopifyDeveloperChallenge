@@ -27,6 +27,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  if (!req.headers["authorization"] || req.headers["authorization"].split(" ")[1] !== "224c560337b54ab4ac6c07eea08b1e20") {
+    return res.sendStatus(403);
+  }
+  next();
+})
+
 app.use("/shop", shopRoutes);
 app.use("/product", productRoutes);
 app.use("/productLI", productLIRoutes);
