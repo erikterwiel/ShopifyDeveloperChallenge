@@ -10,11 +10,11 @@ class ProductLIManager {
   async get({ shopName, productName, name }) {
     
     if (shopName && productName && name) {
-      const shop = await this._productLIService.getByName(shopName, productName, name);
-      return { status: 200, json: [shop] };
+      const productLI = await this._productLIService.getByName(shopName, productName, name);
+      return { status: 200, json: [productLI] };
     } else if (shopName && productName) {
-      const shops = await this._shopService.getByProductName(shopName, productName);
-      return { status: 200, json: shops };
+      const productLIs = await this._shopService.getByProductName(shopName, productName);
+      return { status: 200, json: productLIs };
     } else {
       return { status: 404, json: [] };
     }
@@ -44,7 +44,7 @@ class ProductLIManager {
     
     try {
       const result = await this._productLIService.update(shopName, productName, name, data);
-      return { status: 201, json: result };
+      return { status: 200, json: result };
     } catch (error) {
       return { status: 500, json: error };
     }
@@ -54,7 +54,7 @@ class ProductLIManager {
 
     try {
       const result = await this._productLIService.delete(shopName, productName, name);
-      return { status: 201, json: result };
+      return { status: 200, json: result };
     } catch (error) {
       return { status: 500, json: error };
     }

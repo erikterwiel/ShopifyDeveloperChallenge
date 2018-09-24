@@ -5,6 +5,10 @@ const productSchema = mongoose.Schema({
   shopName: { type: String, required: true },
   name: { type: String, required: true },
   price: { type: Number, required: true },
+  
+  // everything here is added through manager
+  productLineItems: { type: [], required: true },
+  total: { type: Number, required: true },
 });
 
 module.exports = mongoose.model("Product", productSchema);
