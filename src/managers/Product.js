@@ -14,17 +14,19 @@ class ProductManager {
 
       const product = await this._productService.getByName(shopName, name);
       product.productLineItems = await this._productLIService.getByProductName(shopName, name);
+      delete product.quantity;
       delete product.total;
       return { status: 200, json: [product] };
     
     } else if (shopName) {
 
       const products = await this._productService.getByShopName(shopName);
-      const productsModfied = products.map(async product => {
+      const productsModified = products.map(async product => {
         product.productLineItems = await this._productLIService.getByProductName(shopName, product.name);
+        delete.product.quantity;
         delete product.total;
       });
-      return { status: 200, json: productsModfied };
+      return { status: 200, json: productsModified };
     
     } else {
 
@@ -41,6 +43,7 @@ class ProductManager {
       name,
       price,
       productLineItems: [],
+      quantity: 0,
       total: 0,
     })
 

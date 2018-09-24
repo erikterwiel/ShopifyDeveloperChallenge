@@ -11,10 +11,17 @@ class ProductLIManager {
     
     if (shopName && productName && name) {
       const productLI = await this._productLIService.getByName(shopName, productName, name);
+      delete productLI.quantity;
+      delete productLI.total;
       return { status: 200, json: [productLI] };
     } else if (shopName && productName) {
       const productLIs = await this._shopService.getByProductName(shopName, productName);
-      return { status: 200, json: productLIs };
+      const fixedProductLIs = productLIs.map(productLI => {
+        delete productLI.quantity;
+        delete productLI.total;
+        return productLI;
+      })
+      return { status: 200, json: fixedProductLIs };
     } else {
       return { status: 404, json: [] };
     }

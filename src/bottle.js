@@ -17,7 +17,7 @@ bottle.service("productLIService", ProdcutLIService);
 bottle.service("orderService", OrderService);
 bottle.service("productLIManager", ProductLIManager, "productLIService");
 bottle.service("productManager", ProductManager, "productService", "productLIService");
-bottle.service("orderManager", OrderManager, "orderService");
+bottle.service("orderManager", OrderManager, "orderService", "productService", "productLIService");
 bottle.service("shopManager", ShopManager, "shopService");
 
 module.exports = bottle.container;

@@ -8,6 +8,7 @@ const productSchema = mongoose.Schema({
   
   // everything here is added through manager
   productLineItems: { type: [], required: true },
+  quantity: { type: Number, required: true },
   total: { type: Number, required: true },
 });
 
