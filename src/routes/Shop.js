@@ -1,13 +1,17 @@
 const express = require("express");
-const Bottle = require("../bottle");
+const bottle = require("../bottle");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  
+router.get("/", async (req, res) => {
+  const result = await bottle.shopManager.get(req.query);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
-router.post("/", (req, res) => {
-
+router.post("/", async (req, res) => {
+  const result = await bottle.shopManager.get(req.body);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
 module.exports = router;

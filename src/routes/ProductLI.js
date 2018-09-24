@@ -1,21 +1,29 @@
 const express = require("express");
-const Bottle = require("../bottle");
+const bottle = require("../bottle");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  
+router.get("/", async (req, res) => {
+  const result = await bottle.productLIManager.get(req.query);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
-router.post("/", (req, res) => {
-
+router.post("/", async (req, res) => {
+  const result = await bottle.productLIManager.create(req.body);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
-router.patch("/", (req, res) => {
-
+router.patch("/", async (req, res) => {
+  const result = await bottle.productLIManager.update(req.body);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
-router.delete("/", (req, res) => {
-
+router.delete("/", async (req, res) => {
+  const result = await bottle.productLIManager.delete(req.body);
+  const { status, json } = result;
+  res.status(status).json(json);
 });
 
 module.exports = router;
