@@ -185,6 +185,35 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 
 ### GET request ProductLI
 
+http://35.232.145.58/productLI will return
+```
+{
+    []
+}
+```
+
+http://35.232.145.58/product?shopName=shopName&productName=productName will return
+```
+[
+     {
+         "shopName": String,
+         "productName": String,
+         "name": String,
+         "price": Number
+     }
+]
+```
+
+
+http://35.232.145.58/product?shopName=shopName&productName=productName&name=name will return
+```
+{
+     "shopName": String,
+     "productName": String,
+     "name": String,
+     "price": Number
+}
+```
 
 ### POST request ProductLI
 
@@ -223,7 +252,66 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 ## /order
 
 ### GET request Order
+http://35.232.145.58/order will return
+```
+{
+    []
+}
+```
 
+http://35.232.145.58/order?shopName=shopName will return
+```
+[
+    {
+        "_id": ObjectId,
+        "shopName": String,
+        "buyerName": String,
+        "orderLineItems": [
+            {
+                "name": String,
+                "price": Number,
+                "quantity": Number,
+                "productLineItems": [
+                    {
+                        "name": String,
+                        "price": Number,
+                        "quantity": Number,
+                        "total": Number
+                    }
+                ],
+                "total": Number
+            }
+        ],
+        "total": Number
+    }
+]
+```
+
+http://35.232.145.58/order?id=id will return
+```
+{
+    "_id": ObjectId,
+    "shopName": String,
+    "buyerName": String,
+    "orderLineItems": [
+        {
+            "name": String,
+            "price": Number,
+            "quantity": Number,
+            "productLineItems": [
+                {
+                    "name": String,
+                    "price": Number,
+                    "quantity": Number,
+                    "total": Number
+                }
+            ],
+            "total": Number
+        }
+    ],
+    "total": Number
+}
+```
 
 ### POST request Order
 
