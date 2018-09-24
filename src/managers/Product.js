@@ -18,7 +18,7 @@ class ProductManager {
       delete product.total;
       delete product._id;
       delete product.__v;
-      return { status: 200, json: [product] };
+      return { status: 200, json: product[0] };
     
     } else if (shopName) {
 
