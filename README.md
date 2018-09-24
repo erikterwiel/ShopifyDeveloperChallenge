@@ -8,15 +8,15 @@ This project was made for the Shopify Devloper Internship Challenge and was made
 I am also aware that this API does not scale because the products/orders/lineItems are related to the shop based off of the shop's name instead of id. I did this for the sake of time and simplicity so I don't have to keep copy and pasting ids which tends to get pretty tedious. For this reason, on /shop there is only create and read functionality.
 
 # Table of Contents
-- [Deployment] (#deployment)
-- [Testing] (#testing)
-- [API] (#api)
-    - [Authorization] (#authorization)
-    - [Endpoints] (#endpoints)
-    - [/shop] (#shop)
-    - [/product] (#product)
-    - [/productLI] (#productLI)
-    - [/order] (#order)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [API](#api)
+    - [Authorization](#authorization)
+    - [Endpoints](#endpoints)
+    - [/shop](#shop)
+    - [/product](#product)
+    - [/productLI](#productLI)
+    - [/order](#order)
 
 # Deployment
 My Dockerfile and yamls are in the repo and here is proof of it running on GKE:
