@@ -98,7 +98,7 @@ http://35.232.145.58/shop?name=shopName will return object below, try http://35.
 Make a POST request to http://35.232.145.58/shop with the JSON body below to add a new shop
 ```
 {
-	"name": String
+    "name": String
 }
 ```
 
@@ -106,15 +106,57 @@ Make a POST request to http://35.232.145.58/shop with the JSON body below to add
 
 ### GET request Product
 
+http://35.232.145.58/product will return
+```
+{
+    []
+}
+```
+
+http://35.232.145.58/product?shopName=shopName will return
+```
+[
+    {
+    	"shopName": String,
+        "name": String,
+        "price": Number,
+        "productLineItems": [
+            {
+                "shopName": String,
+                "productName": String,
+                "name": String,
+                "price": Number,
+            }
+        ]
+    }
+]
+```
+
+http://35.232.145.58/product?shopName=shopName&name=name will return
+```
+{
+    "shopName": String,
+    "name": String,
+    "price": Number,
+    "productLineItems": [
+         {
+             "shopName": String,
+             "productName": String,
+             "name": String,
+             "price": Number,
+         }
+    ],
+}
+```
 
 ### POST request Product
 
 Make a POST request to http://35.232.145.58/product with the JSON body below to add a new product
 ```
 {
-	"shopName": String,
-	"name": String,
-	"price": Number
+    "shopName": String,
+    "name": String,
+    "price": Number
 }
 ```
 
@@ -124,9 +166,9 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 ```
 {
     "_id": ObjectId,
-	"shopName": String,
-	"name": String,
-	"price": Number
+    "shopName": String,
+    "name": String,
+    "price": Number
 }
 ```
 
@@ -149,10 +191,10 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 Make a POST request to http://35.232.145.58/productLI with the JSON body below to add a new productLI
 ```
 {
-	"shopName": String,
-	"productName": String,
-	"name": String,
-	"price": Number
+    "shopName": String,
+    "productName": String,
+    "name": String,
+    "price": Number
 }
 ```
 
@@ -163,9 +205,9 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 {
     "_id": ObjectId,
     "shopName": String,
-	"productName": String,
-	"name": String,
-	"price": Number
+    "productName": String,
+    "name": String,
+    "price": Number
 }
 ```
 
@@ -188,20 +230,20 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 Make a POST request to http://35.232.145.58/order with the JSON body below to add a new order
 ```
 {
-	"shopName": String,
-	"buyerName": String,
+    "shopName": String,
+    "buyerName": String,
     "orderLineItems": [
-		{
-			"name": String,
-			"quantity": Number,
-			"productLineItems": [
-				{
-					"name": String,
-					"quantity": Number
-				}
-			]
-		}
-	]
+        {
+            "name": String,
+            "quantity": Number,
+            "productLineItems": [
+                {
+                    "name": String,
+                    "quantity": Number
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -211,20 +253,20 @@ Make a POST request to http://35.232.145.58/order with the JSON body below to up
 ```
 {
     "_id": ObjectId,
-	"shopName": String,
-	"buyerName": String,
+    "shopName": String,
+    "buyerName": String,
     "orderLineItems": [
-		{
-			"name": String,
-			"quantity": Number,
-			"productLineItems": [
-				{
-					"name": String,
-					"quantity": Number
-				}
-			]
-		}
-	]
+        {
+            "name": String,
+            "quantity": Number,
+            "productLineItems": [
+                {
+                    "name": String,
+                    "quantity": Number
+                }
+            ]
+        }
+    ]
 }
 ```
 
