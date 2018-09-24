@@ -9,7 +9,7 @@ const productRoutes = require("./routes/Product");
 const productLIRoutes = require("./routes/ProductLI");
 const orderRoutes = require("./routes/Order");
 
-mongoose.connect("mongodb://localhost:27017/shopify", { useNewUrlParser: true });
+mongoose.connect("mongodb://shopify:shopify123@ds043991.mlab.com:43991/shopify", { useNewUrlParser: true });
 
 const app = express();
 
@@ -36,7 +36,7 @@ app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
-const port = "5000";
+const port = "3000";
 app.set("port", port);
 const server = http.createServer(app);
 server.listen(port, () => `Running on port ${port}`);

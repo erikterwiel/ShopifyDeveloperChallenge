@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        name: api
+    spec:
+      containers:
+      - name: api
+        image: gcr.io/shopifychallenge-217406/api:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
