@@ -9,7 +9,7 @@ class OrderManager {
     this._productLIService = productLIService;
   }
 
-  async get({ id, shopName, }) {
+  async get({ id, shopName }) {
     if (id) {
 
       const originalOrder = await this._orderService.getById(id);

@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const result = await bottle.shopManager.get(req.body);
+  const result = await bottle.shopManager.create(req.body);
   const { status, json } = result;
   res.status(status).json(json);
 });

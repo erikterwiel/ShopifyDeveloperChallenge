@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const Shop = require("../models/Shop");
 
 class ShopManager {
-  constructor(shopService) {
+  constructor(shopService, orderManager, productManager) {
     this._shopService = shopService;
+    this._orderManager = orderManager;
+    this._productManager = productManager;
   }
 
   async get(query) {
@@ -11,8 +13,15 @@ class ShopManager {
     const { name } = query;
     
     if (name) {
-      const shop = await this._shopService.getByName(name);
-      return { status: 200, json: [shop] };
+      
+      const originalShop = await this._shopService.getByName(name);
+      
+      const shop = {};
+      shop.products = await this._productManager.get({ shopName: name });
+      shop.orders = await this._orderManager.get({ shopName: name });
+
+      return { status: 200, json: shop };
+
     } else {
       const shops = await this._shopService.getAll();
       return { status: 200, json: shops };
