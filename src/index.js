@@ -3,6 +3,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+const shopRoutes = require("./routes/Shop");
+const productRoutes = require("./routes/Product");
+const productLIRoutes = require("./routes/ProductLI");
+const orderRoutes = require("./routes/Order");
+
 mongoose.connect("mongodb://localhost:27017/shopify", { useNewUrlParser: true });
 
 const app = express();
@@ -19,6 +24,11 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use("/shop", shopRoutes);
+app.use("/product", productRoutes);
+app.use("/productLI", productLIRoutes);
+app.use("/order", orderRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
