@@ -3,7 +3,7 @@
 This project was made for the Shopify Devloper Internship Challenge and was made using Node.js with Express and MongoDB. It fully meets the base requirements of the challenge plus I did some of the extras.
 - Basically full CRUD support (see below)
 - Added very basic API key security (I know how to further secure using jwt etc but it's 4AM and I need to study for a test tomorrow :/ but this quick and has some security)
-- Deployed to a GKE cluster at http://35.232.145.58/ with load balancing and MongoDB support
+- Deployed to a GKE cluster at http://35.232.145.58/ with load balancing and MongoDB support (redeployed to Heroku at https://quiet-mountain-29039.herokuapp.com/ because GKE costs were racking up
 
 I am also aware that this API does not scale because the products/orders/lineItems are related to the shop based off of the shop's name instead of id. I did this for the sake of time and simplicity so I don't have to keep copy and pasting ids which tends to get pretty tedious. For this reason, on /shop there is only create and read functionality.
 
@@ -43,7 +43,7 @@ Authorization: Key 224c560337b54ab4ac6c07eea08b1e20
 
 ### GET request Shop
 
-http://35.232.145.58/shop will return
+https://quiet-mountain-29039.herokuapp.com/shop will return
 ```
 [
     {
@@ -53,7 +53,7 @@ http://35.232.145.58/shop will return
 ]
 ```
 
-http://35.232.145.58/shop?name=shopName will return object below, try http://35.232.145.58/shop?name=EriksCarShop for testing
+https://quiet-mountain-29039.herokuapp.com/shop?name=shopName will return object below, try https://quiet-mountain-29039.herokuapp.com/shop?name=EriksCarShop for testing
 ```
 {
     "_id": ObjectId,
@@ -102,7 +102,7 @@ http://35.232.145.58/shop?name=shopName will return object below, try http://35.
 
 ### POST request Shop
 
-Make a POST request to http://35.232.145.58/shop with the JSON body below to add a new shop
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/shop with the JSON body below to add a new shop
 ```
 {
     "name": String
@@ -113,14 +113,14 @@ Make a POST request to http://35.232.145.58/shop with the JSON body below to add
 
 ### GET request Product
 
-http://35.232.145.58/product will return
+https://quiet-mountain-29039.herokuapp.com/product will return
 ```
 {
     []
 }
 ```
 
-http://35.232.145.58/product?shopName=shopName will return
+https://quiet-mountain-29039.herokuapp.com/product?shopName=shopName will return
 ```
 [
     {
@@ -139,7 +139,7 @@ http://35.232.145.58/product?shopName=shopName will return
 ]
 ```
 
-http://35.232.145.58/product?shopName=shopName&name=name will return
+https://quiet-mountain-29039.herokuapp.com/product?shopName=shopName&name=name will return
 ```
 {
     "shopName": String,
@@ -158,7 +158,7 @@ http://35.232.145.58/product?shopName=shopName&name=name will return
 
 ### POST request Product
 
-Make a POST request to http://35.232.145.58/product with the JSON body below to add a new product
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/product with the JSON body below to add a new product
 ```
 {
     "shopName": String,
@@ -169,7 +169,7 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 
 ### PATCH request Product
 
-Make a POST request to http://35.232.145.58/product with the JSON body below to update a product
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/product with the JSON body below to update a product
 ```
 {
     "_id": ObjectId,
@@ -181,7 +181,7 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 
 ### Delete request Product
 
-Make a POST request to http://35.232.145.58/product with the JSON body below to delete a product
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/product with the JSON body below to delete a product
 ```
 {
     "_id": ObjectId,
@@ -192,14 +192,14 @@ Make a POST request to http://35.232.145.58/product with the JSON body below to 
 
 ### GET request ProductLI
 
-http://35.232.145.58/productLI will return
+https://quiet-mountain-29039.herokuapp.com/productLI will return
 ```
 {
     []
 }
 ```
 
-http://35.232.145.58/product?shopName=shopName&productName=productName will return
+https://quiet-mountain-29039.herokuapp.com/product?shopName=shopName&productName=productName will return
 ```
 [
      {
@@ -212,7 +212,7 @@ http://35.232.145.58/product?shopName=shopName&productName=productName will retu
 ```
 
 
-http://35.232.145.58/product?shopName=shopName&productName=productName&name=name will return
+https://quiet-mountain-29039.herokuapp.com/product?shopName=shopName&productName=productName&name=name will return
 ```
 {
      "shopName": String,
@@ -224,7 +224,7 @@ http://35.232.145.58/product?shopName=shopName&productName=productName&name=name
 
 ### POST request ProductLI
 
-Make a POST request to http://35.232.145.58/productLI with the JSON body below to add a new productLI
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/productLI with the JSON body below to add a new productLI
 ```
 {
     "shopName": String,
@@ -236,7 +236,7 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 
 ### PATCH request ProductLI
 
-Make a POST request to http://35.232.145.58/productLI with the JSON body below to update a productLI
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/productLI with the JSON body below to update a productLI
 ```
 {
     "_id": ObjectId,
@@ -249,7 +249,7 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 
 ### Delete request ProductLI
 
-Make a POST request to http://35.232.145.58/productLI with the JSON body below to delete a productLI
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/productLI with the JSON body below to delete a productLI
 ```
 {
     "_id": ObjectId,
@@ -259,14 +259,14 @@ Make a POST request to http://35.232.145.58/productLI with the JSON body below t
 ## /order
 
 ### GET request Order
-http://35.232.145.58/order will return
+https://quiet-mountain-29039.herokuapp.com/order will return
 ```
 {
     []
 }
 ```
 
-http://35.232.145.58/order?shopName=shopName will return
+https://quiet-mountain-29039.herokuapp.com/order?shopName=shopName will return
 ```
 [
     {
@@ -294,7 +294,7 @@ http://35.232.145.58/order?shopName=shopName will return
 ]
 ```
 
-http://35.232.145.58/order?id=id will return
+https://quiet-mountain-29039.herokuapp.com/order?id=id will return
 ```
 {
     "_id": ObjectId,
@@ -322,7 +322,7 @@ http://35.232.145.58/order?id=id will return
 
 ### POST request Order
 
-Make a POST request to http://35.232.145.58/order with the JSON body below to add a new order
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/order with the JSON body below to add a new order
 ```
 {
     "shopName": String,
@@ -344,7 +344,7 @@ Make a POST request to http://35.232.145.58/order with the JSON body below to ad
 
 ### PATCH request Order
 
-Make a POST request to http://35.232.145.58/order with the JSON body below to update an order
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/order with the JSON body below to update an order
 ```
 {
     "_id": ObjectId,
@@ -367,7 +367,7 @@ Make a POST request to http://35.232.145.58/order with the JSON body below to up
 
 ### Delete request Order
 
-Make a POST request to http://35.232.145.58/order with the JSON body below to delete an order
+Make a POST request to https://quiet-mountain-29039.herokuapp.com/order with the JSON body below to delete an order
 ```
 {
     "_id": ObjectId,
