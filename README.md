@@ -23,7 +23,7 @@ My Dockerfile and yamls are in the repo and here is proof of it running on GKE:
 ![screenshot from 2018-09-24 03-35-09](https://user-images.githubusercontent.com/29645585/45942033-ced3c580-bfae-11e8-9e0c-2b3fbde9e64a.png)
 
 # Testing
-You can try http://35.232.145.58/shop?name=EriksCarShop for testing or you can mess around with the endpoints below, be sure to check out authentication below first though
+You can try https://quiet-mountain-29039.herokuapp.com/shop?name=EriksCarShop for testing or you can mess around with the endpoints below, be sure to check out authentication below first though
 
 # API
 
